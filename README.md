@@ -2,7 +2,7 @@
 - 👋 Hi, I’m @jwyckoff
 - 👀 I live in Franklin, TN (near Nashville)
 - 🌱 I work for InCycle Software
-- Lead organizer of DevOpsDays Nashfille
+- Lead organizer of [DevOpsDays Nashville](https://www.devopsdays.org/nashville)
 
 ## 🔧 Technologies & Languages
 
