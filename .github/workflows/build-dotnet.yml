@@ -126,6 +126,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ inputs.OUTPUT_FOLDER }}
+          asset_path: ${{ inputs.OUTPUT_FOLDER }}/${{ github.event.repository.name }}-${{ needs.gitVersionJob.outputs.semVer }}.zip
           asset_name: ${{ github.event.repository.name }}-${{ needs.gitVersionJob.outputs.semVer }}.zip
           asset_content_type: application/zip
