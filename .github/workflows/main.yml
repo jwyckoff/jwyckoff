@@ -34,6 +34,8 @@ on:
 
 permissions:
   contents: write
+  deployments: write
+  packages: write
   issues: write
   pull-requests: write
 
