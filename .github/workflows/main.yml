@@ -112,10 +112,8 @@ jobs:
       - name: temp
         id: temp
         run: |
-          ls ${{ inputs.OUTPUT_FOLDER }}
-          for f in ${{ inputs.OUTPUT_FOLDER }}/*; do
-            cat "$f"
-          done
+          # list all the files recursive in the output folder
+          ls -R ${{ inputs.OUTPUT_FOLDER }}
 
       - name: Upload binaries to release
         uses: actions/upload-release-asset@v1
