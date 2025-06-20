@@ -1,4 +1,4 @@
-name: Main CI
+name: Build .NET
 
 # env:
 #   GITHUB_ORG: jwyckoff
@@ -41,7 +41,7 @@ permissions:
 
 jobs:
   gitVersionJob:
-    name: Generate Semantic Version
+    name: Generate SemVer
     runs-on: ubuntu-latest
     outputs:
       major: ${{ steps.execute-gitversion-step.outputs.major }}
@@ -95,32 +95,3 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}-${{ needs.gitVersionJob.outputs.semVer }}
           path: ${{ inputs.OUTPUT_FOLDER }}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ needs.gitVersionJob.outputs.semVer }}
-          release_name: Release v${{ needs.gitVersionJob.outputs.semVer }}
-          body: |
-            Automated release for version ${{ needs.gitVersionJob.outputs.semVer }}.
-          draft: false
-          prerelease: false
-
-      - name: temp
-        id: temp
-        run: |
-          # list all the files recursive in the output folder
-          ls -R ${{ inputs.OUTPUT_FOLDER }}
-
-      - name: Upload binaries to release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ inputs.OUTPUT_FOLDER }}
-          asset_name: wft-db
-          asset_content_type: application/octet-stream
