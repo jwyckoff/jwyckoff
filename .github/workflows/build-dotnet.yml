@@ -1,9 +1,5 @@
 name: Build .NET
 
-# env:
-#   GITHUB_ORG: jwyckoff
-#   GITHUB_USER: jwyckoff
-
 on:
   workflow_call:
     inputs:
@@ -11,17 +7,10 @@ on:
         required: false
         type: string
         default: ./artifacts
-
-      PUBLISH_PROJECT_FOLDER:
+      PROJECT_PATH:
         required: false
         type: string
-        default: ./src/GitVersionDemo
-
-      PUBLISH_PROJECT_FILE:
-        required: false
-        type: string
-        default: GitVersionDemo.csproj
-
+        default: ./src/GitVersionDemo/GitVersionDemo.csproj
       CONFIGURATION:
         required: false
         type: string
